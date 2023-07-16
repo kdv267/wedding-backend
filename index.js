@@ -6,7 +6,7 @@ import cors from 'cors';
 dotenv.config();
 
 const PORT = 5002;
-const DB_URL = process.env.MONGO_URL;
+const DB_URL = 'mongodb+srv://kotovd267:Ljhf86Ljhf@cluster1.win3lin.mongodb.net/?retryWrites=true&w=majority';
 
 const app = express();
 
