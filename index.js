@@ -6,11 +6,9 @@ import cors from 'cors';
 dotenv.config();
 
 const PORT = 5002;
-const DB_URL = 'mongodb+srv://kotovd267:Ljhf86Ljhf@cluster1.win3lin.mongodb.net/?retryWrites=true&w=majority';
+const DB_URL = process.env.MONGO_URL;
 
 const app = express();
-
-console.log(DB_URL);
 
 app.use(express.json());
 app.use(
@@ -49,8 +47,7 @@ app.put('/:link', async (req, res) => {
 app.post('/new_guest', async (req, res) => {
   try {
     const { link, name } = req.body;
-
-    const guestData = { link, ...defaultValues, ...req.body };
+    const guestData = { link, name};
     const guest = await Guest.create(guestData);
     res.status(201).json(guest);
   } catch (error) {
